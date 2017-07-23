@@ -4,12 +4,22 @@ function main() {
     var linkPerson = '';
     var linkDoor = 'http://158.108.165.223/data/5910500520/door';
     var linkAir = '';
+
+      $('#switch').click(function(){
+        console.log($('#switch').val());
+        if($('#switch').val()===true){
+          $(autobox).val('Only Manual');
+        }
+        else{
+          $(autobox).val('Automatical');
+        }
+      })
     //Receive temperature from url
     setInterval(function() {
         $.ajax({
             url: linkTemp
         }).done(function(data) {
-            $('#tempbox').val('Tempurature : '+data);
+            $('#tempbox').val('Tempurature : ' + data);
         }).fail(function() {
             console.error('Fail to receive temperature');
         });
@@ -20,7 +30,7 @@ function main() {
         $.ajax({
             url: linkBright
         }).done(function(data) {
-            $('#lightbox').val('Brightness : '+data);
+            $('#lightbox').val('Brightness : ' + data);
         }).fail(function() {
             console.error('Fail to receive Brightness');
         });
@@ -43,7 +53,7 @@ function main() {
             url: linkDoor
         }).done(function(data) {
             console.log('done');
-            if (data == 1) {
+            if (data == 1 || data == 2) {
                 $('#doorbox').val('Door : Open');
                 $('#doorbutton').val('open');
             } else {
@@ -61,13 +71,13 @@ function main() {
         if ($('#doorbutton').val() === 'open') {
             msg = 0;
             // $("#doorbutton").prop('value', 'Save');
-            $( "#doorbutton" ).val(  "close" );
-            $( "#doorbutton" ).text( 'Open the Door' );
+            $("#doorbutton").val("close");
+            $("#doorbutton").text('Open the Door');
         } else {
             msg = 1;
             // $("#doorbutton").prop('value', 'Save');
-            $( "#doorbutton" ).val( 'open' );
-            $( "#doorbutton" ).text( 'Close the Door' );
+            $("#doorbutton").val('open');
+            $("#doorbutton").text('Close the Door');
         }
         $.ajax({
             url: linkDoor + '/set/' + msg
@@ -85,13 +95,13 @@ function main() {
         if ($('#doorbutton').val() === 'open') {
             msg = 0;
             // $("#doorbutton").prop('value', 'Save');
-            $( "#doorbutton" ).val(  "close" );
-            $( "#doorbutton" ).text( 'Open the Air' );
+            $("#doorbutton").val("close");
+            $("#doorbutton").text('Open the Air');
         } else {
             msg = 1;
             // $("#doorbutton").prop('value', 'Save');
-            $( "#doorbutton" ).val( 'open' );
-            $( "#doorbutton" ).text( 'Close the Air' );
+            $("#doorbutton").val('open');
+            $("#doorbutton").text('Close the Air');
         }
         $.ajax({
             url: linkDoor + '/set/' + msg

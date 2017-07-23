@@ -78,3 +78,7 @@ input:checked + .slider:before {
 #mid{
     margin-top: 60px;
 }
+#auto{
+  color: white;
+
+}
