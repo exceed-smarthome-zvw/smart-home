@@ -70,3 +70,11 @@ input:checked + .slider:before {
 #onofftab{
     color: white;
 }
+
+.form-control{
+    
+}
+
+#mid{
+    margin-top: 60px;
+}

@@ -18,54 +18,56 @@
   <link rel="stylesheet" href="index.css" type="text/css">
 
 
-  <head>
-    <body>
-      <div>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+</head>
 
-          <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="rows">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<body>
+  <div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="rows">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-              <div class='col-sm-2'>
-                <a class="navbar-brand" href="#">
-                  <div class="glyphicon glyphicon-home"></div> Smart Home
-                </a>
- 
-              </div>
-              <div class='col-sm-10'>
+          <div class='col-sm-2'>
+            <a class="navbar-brand" href="#">
+              <div class="glyphicon glyphicon-home"></div> Smart Home
+            </a>
 
-                <label class="switch"><input type="checkbox">
+          </div>
+          <div class='col-sm-10'>
+
+            <label class="switch"><input type="checkbox">
                 <span class="slider round"></span>
                 </label>
-              </div>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <!-- /.navbar-collapse -->
           </div>
-          <!-- /.container -->
-        </nav>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+    <div class="rows" id="mid">
+      <div class="col-md-8">
+        <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+      </div>
 
-        <center>
-          <div class="col-md-8">
-            <img class="img-responsive" src="http://placehold.it/750x500" alt="">
-          </div>
-        </center>
-
+      <div class='col-md-3'>
         <textarea id='tempbox' class="form-control" disabled="" rows="1">Temperature : </textarea>
         <textarea id='personbox' class="form-control" disabled="" rows="1">Person : </textarea>
         <textarea id='lightbox' class="form-control" disabled="" rows="1">Brightness : </textarea>
         <textarea id='doorbox' class="form-control" disabled="" rows="1">Door : </textarea>
         <button id='doorbutton' value='close'>Open the Door</button>
       </div>
+    </div>
+  </div>
 
-      <script src='index.js'></script>
+  <script src='index.js'></script>
 
-    </body>
+</body>
 
 </html>
