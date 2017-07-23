@@ -1,7 +1,7 @@
 .switch{
-     margin-top: 18px; 
+     margin-top: 18px;
     float: right;
-    position: relative; 
+    position: relative;
     /* display: inline-block; */
     width: 40px;
     height: 20px;
@@ -69,4 +69,12 @@ input:checked + .slider:before {
 
 #onofftab{
     color: white;
+}
+
+.form-control{
+
+}
+
+#mid{
+    margin-top: 60px;
 }

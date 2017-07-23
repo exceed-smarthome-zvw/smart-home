@@ -3,7 +3,7 @@ function main() {
     var linkBright = 'http://158.108.165.223/data/5910503758/bright';
     var linkPerson = '';
     var linkDoor = 'http://158.108.165.223/data/5910500520/door';
-
+    var linkAir = '';
     //Receive temperature from url
     setInterval(function() {
         $.ajax({
