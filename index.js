@@ -44,10 +44,10 @@ function main() {
         }).done(function(data) {
             console.log('done');
             if (data == 1) {
-                $('#doorbox').val('Door : Open');
+                $('#doorbox').text('Door : Open');
                 $('#doorbutton').val('open');
             } else {
-                $('#doorbox').val('Door : Close');
+                $('#doorbox').text('Door : Close');
                 $('#doorbutton').val('close');
             }
         }).fail(function() {

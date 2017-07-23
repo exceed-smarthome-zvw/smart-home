@@ -67,14 +67,30 @@ input:checked + .slider:before {
     float:lefts
 } 
 
-.form-control{
-  resize: none;
-}
-
 #onofftab{
     color: white;
 }
 
 #mid{
     margin-top: 60px;
+}
+
+.form-control{
+  border-style: solid;
+  border-top: 20px;
+}
+
+.infobox{
+  height: 150px;
+  margin-bottom: 20px;  
+}
+
+.icon-resize {
+  font-size: 70px;
+}
+
+#doorbutton{
+  border-radius: 12px;
+  background-color: white;
+  border-color: gray;
 }

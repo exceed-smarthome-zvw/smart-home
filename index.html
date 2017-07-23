@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
     crossorigin="anonymous">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
@@ -34,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-          <div class='col-sm-2'>
+          <div class='col-md-2'>
             <a class="navbar-brand" href="#">
               <div class="glyphicon glyphicon-home"></div> Smart Home
             </a>
@@ -53,17 +55,59 @@
       <!-- /.container -->
     </nav>
     <div class="rows" id="mid">
-      <div class="col-md-8">
-        <img class="img-responsive" src = "pic/home.jpg" alt="" >
+      <div class="col-md-7 ">
+        <img class="img-responsive" src="pic/home.jpg" alt="">
       </div>
 
-      <div class='col-md-3'>
-        <textarea id='tempbox' class="form-control" disabled="" rows="1">Temperature : </textarea>
-        <textarea id='personbox' class="form-control" disabled="" rows="1">Person : </textarea>
-        <textarea id='lightbox' class="form-control" disabled="" rows="1">Brightness : </textarea>
-        <textarea id='airbox' class="form-control" disabled="" rows="1">Air : </textarea>
-        <textarea id='doorbox' class="form-control" disabled="" rows="1">Door : </textarea>
-        <button id='doorbutton' value='close'>Open the Door</button>
+      <div class='col-md-5'>
+        <div class='col-md-6 '>
+
+          <div class="form-control infobox" id='tempbox'>
+            <h5>
+              <i class="fa fa-thermometer-full icon-resize"></i> Temperature :
+            </h5>
+          </div>
+
+          <div class="form-control infobox" id='personbox'>
+            <h5>
+              <i class="fa fa-user-circle-o icon-resize"></i> Person :
+            </h5>
+          </div>
+
+          <div class="form-control infobox" id='lightbox'>
+            <h5>
+              <i class="fa fa-sun-o icon-resize"></i> Brightness :
+            </h5>
+          </div>
+
+        </div>
+        <div class='col-md-6'>
+
+          <div class="form-control infobox" id="airbox">
+            <h5>
+              <i class="fa fa-cloud icon-resize"></i> Air :
+            </h5>
+          </div>
+
+          <div class="form-control infobox">
+            <div class = "col-md-12">
+            <div class = "col-md-6">
+              <div class="">    
+                <i class="fa fa-columns icon-resize"></i>    
+              </div>
+            </div>
+            <div class = "col-md-6">
+              <label id="doorbox">
+                    Door : 
+              </label>
+            </div>
+            </div>    
+            <div class = "col-md-12">
+              <button id='doorbutton' value='close'>Open the Door</button>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
