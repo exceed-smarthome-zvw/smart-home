@@ -1,19 +1,24 @@
+
 function main() {
     var linkTemp = 'http://158.108.165.223/data/5910503758/temperature';
     var linkBright = 'http://158.108.165.223/data/5910503758/bright';
     var linkPerson = '';
     var linkDoor = 'http://158.108.165.223/data/5910500520/door';
-    var linkAir = '';
+    var linkAir = 'http://158.108.165.223/data/5910503758/air';
+    var linkLight = 'http://158.108.165.223/data/5910503758/light'
+    var toggle = 0;
 
-      $('#switch').click(function(){
-        console.log($('#switch').val());
-        if($('#switch').val()===true){
-          $(autobox).val('Only Manual');
-        }
-        else{
-          $(autobox).val('Automatical');
-        }
-      })
+    $('#switch').click(function(){
+      if(toggle==0){
+        toggle=1;
+        $(autobox).val('Automatical');
+      }
+      else{
+        toggle=0;
+        $(autobox).val('Only Manual');
+      }
+    })
+
     //Receive temperature from url
     setInterval(function() {
         $.ajax({
@@ -30,7 +35,7 @@ function main() {
         $.ajax({
             url: linkBright
         }).done(function(data) {
-            $('#lightbox').val('Brightness : ' + data);
+            $('#brightbox').val('Brightness : ' + data);
         }).fail(function() {
             console.error('Fail to receive Brightness');
         });
@@ -65,6 +70,67 @@ function main() {
         });
     }, 400);
 
+    //receive the light
+    setInterval(function() {
+        $.ajax({
+            url: linkLight
+        }).done(function(data) {
+            console.log('done');
+            if (data==1) {
+                $('#lightbox').val('Light : On');
+                $('#lightbutton').val('open');
+            } else {
+                $('#lightbox').val('Light : Off');
+                $('#lightbutton').val('close');
+            }
+        }).fail(function() {
+            console.error('Fail to receive Door');
+        });
+    }, 400);
+
+
+     //receive the air
+    setInterval(function() {
+        $.ajax({
+            url: linkAir
+        }).done(function(data) {
+            console.log('done');
+            if (data=='ON') {
+                $('#airbox').val('Air : On');
+                $('#airbutton').val('open');
+            } else {
+                $('#airbox').val('Air : Off');
+                $('#airbutton').val('close');
+            }
+        }).fail(function() {
+            console.error('Fail to receive Door');
+        });
+    }, 400);
+
+    //set the light on off
+    $('#lightbutton').click(function() {
+        var msg
+        if ($('#lightbutton').val() === 'open') {
+            msg = 'OFF';
+            // $("#doorbutton").prop('value', 'Save');
+            $("#doorbutton").val("close");
+            $("#doorbutton").text('Open the Light');
+        } else {
+            msg = 1;
+            // $("#doorbutton").prop('value', 'Save');
+            $("#lightbutton").val('open');
+            $("#lightbutton").text('Close the Light');
+        }
+        $.ajax({
+            url: linkLight + '/set/' + msg
+        }).done(function() {
+            console.log('sent light action complete');
+
+        }).fail(function() {
+            console.error('Fail to sent light action');
+        });
+    });
+
     //set the door to close or open
     $('#doorbutton').click(function() {
         var msg
@@ -92,19 +158,19 @@ function main() {
     //set the air
     $('#airbutton').click(function() {
         var msg
-        if ($('#doorbutton').val() === 'open') {
-            msg = 0;
+        if ($('#airbutton').val() === 'open') {
+            msg = 'OFF';
             // $("#doorbutton").prop('value', 'Save');
-            $("#doorbutton").val("close");
-            $("#doorbutton").text('Open the Air');
+            $("#airbutton").val("close");
+            $("#airbutton").text('Open the Air');
         } else {
-            msg = 1;
+            msg = 'ON';
             // $("#doorbutton").prop('value', 'Save');
-            $("#doorbutton").val('open');
-            $("#doorbutton").text('Close the Air');
+            $("#airbutton").val('open');
+            $("#airbutton").text('Close the Air');
         }
         $.ajax({
-            url: linkDoor + '/set/' + msg
+            url: linkAir + '/set/' + msg
         }).done(function() {
             console.log('sent air action complete');
 

@@ -58,21 +58,21 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.col-md-8{
+ .col-md-8{
     position:relative;
     min-height:1px;
     padding-right:15px;
     padding-left:15px;
     width:66.66666667%;
     float:lefts
+} 
+
+.form-control{
+  resize: none;
 }
 
 #onofftab{
     color: white;
-}
-
-.form-control{
-
 }
 
 #mid{
