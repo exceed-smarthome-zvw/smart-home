@@ -20,6 +20,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="index.css" type="text/css">
 
+  
+
 
 </head>
 
@@ -42,9 +44,9 @@
             </a>
 
           </div>
-          <div class='col-sm-10'>
+          <div class='col-md-10'>
 
-            <label class="switch"><input type="checkbox">
+            <label class="switch"><input id='switch' type="checkbox">
                 <span class="slider round"></span>
                 </label>
           </div>
@@ -55,58 +57,67 @@
       <!-- /.container -->
     </nav>
     <div class="rows" id="mid">
+      
       <div class="col-md-7 ">
         <img class="img-responsive" src="pic/home.jpg" alt="">
       </div>
 
       <div class='col-md-5'>
-        <div class='col-md-6 '>
-
+        <textarea id='autobox' class="form-control" disabled="" rows="1">Only Manual</textarea>
+        <div class='col-md-6 '> 
           <div class="form-control infobox" id='tempbox'>
-            <h5>
+            <label>
               <i class="fa fa-thermometer-full icon-resize"></i> Temperature :
-            </h5>
+            </label>
           </div>
 
           <div class="form-control infobox" id='personbox'>
-            <h5>
+            <label>
               <i class="fa fa-user-circle-o icon-resize"></i> Person :
-            </h5>
+            </label>
           </div>
 
           <div class="form-control infobox" id='lightbox'>
-            <h5>
+            <label>
               <i class="fa fa-sun-o icon-resize"></i> Brightness :
-            </h5>
+            </label>
           </div>
 
         </div>
         <div class='col-md-6'>
-
-          <div class="form-control infobox" id="airbox">
-            <h5>
-              <i class="fa fa-cloud icon-resize"></i> Air :
-            </h5>
+          <div class="form-control infobox">
+            <div class = "col-md-5">
+              <i class="fa fa-cloud icon-resize"></i>
+            </div>
+            <div class = "col-md-7">
+              <label  id="airbox">
+               Air :
+            </label>
+            </div>
+            <div class = "col-md-12">
+              <button class = "in-box-button" id='airbutton' value='close'>Open the air</button> 
+            </div>
           </div>
 
           <div class="form-control infobox">
             <div class = "col-md-12">
-            <div class = "col-md-6">
-              <div class="">    
-                <i class="fa fa-columns icon-resize"></i>    
+              <div class = "col-md-5">
+                <div class="">  
+                  <i class="fa fa-columns icon-resize"></i>    
+                </div>
               </div>
-            </div>
-            <div class = "col-md-6">
-              <label id="doorbox">
-                    Door : 
-              </label>
-            </div>
+              <div class = "col-md-7">
+                <label id="doorbox">
+                      Door : 
+                </label>
+              </div>
             </div>    
             <div class = "col-md-12">
-              <button id='doorbutton' value='close'>Open the Door</button>
+              <button class = "fa fa-columns" id='doorbutton' value='close'></button> 
             </div>
+            <!-- <button id='airbutton' value='close' >Open the Air</button>
+                <button id='lightbutton' value='close' >Open the Light</button> -->
           </div>
-
         </div>
       </div>
     </div>

@@ -89,7 +89,7 @@ input:checked + .slider:before {
   font-size: 70px;
 }
 
-#doorbutton{
+.in-box-button{
   border-radius: 12px;
   background-color: white;
   border-color: gray;
