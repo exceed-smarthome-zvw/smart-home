@@ -1,19 +1,19 @@
 function main() {
-    var linkTemp = '';
+    var linkTemp = 'http://158.108.165.223/data/5910503758/temp';
     var linkBright = '';
     var linkPerson = '';
     var linkDoor = 'http://158.108.165.223/data/5910500520/door';
 
     //Receive temperature from url
-    // setInterval(function() {
-    //     $.ajax({
-    //         url: linkTemp
-    //     }).done(function(data) {
-    //         $('#tempbox').val(data);
-    //     }).fail(function() {
-    //         console.error('Fail to receive temperature');
-    //     });
-    // }, 1000);
+    setInterval(function() {
+        $.ajax({
+            url: linkTemp
+        }).done(function(data) {
+            $('#tempbox').val('Tempurature : '+data);
+        }).fail(function() {
+            console.error('Fail to receive temperature');
+        });
+    }, 400);
 
     //Receive Brightness from url
     // setInterval(function() {
@@ -24,7 +24,7 @@ function main() {
     //     }).fail(function() {
     //         console.error('Fail to receive Brightness');
     //     });
-    // }, 1000);
+    // }, 400);
 
     //Receive Person from url
     // setInterval(function() {
@@ -35,7 +35,7 @@ function main() {
     //     }).fail(function() {
     //         console.error('Fail to receive Person');
     //     });
-    // }, 1000);
+    // }, 400);
 
     //Receive Door from url
     setInterval(function() {
@@ -45,13 +45,15 @@ function main() {
             console.log('done');
             if (data == 1) {
                 $('#doorbox').val('Door : Open');
+                $('#doorbutton').val('open');
             } else {
                 $('#doorbox').val('Door : Close');
+                $('#doorbutton').val('close');
             }
         }).fail(function() {
             console.error('Fail to receive Door');
         });
-    }, 1000);
+    }, 400);
 
     //set the door to close or open
     $('#doorbutton').click(function() {
@@ -74,6 +76,30 @@ function main() {
 
         }).fail(function() {
             console.error('Fail to sent door action');
+        });
+    });
+
+    //set the air
+    $('#airbutton').click(function() {
+        var msg
+        if ($('#doorbutton').val() === 'open') {
+            msg = 0;
+            // $("#doorbutton").prop('value', 'Save');
+            $( "#doorbutton" ).val(  "close" );
+            $( "#doorbutton" ).text( 'Open the Air' );
+        } else {
+            msg = 1;
+            // $("#doorbutton").prop('value', 'Save');
+            $( "#doorbutton" ).val( 'open' );
+            $( "#doorbutton" ).text( 'Close the Air' );
+        }
+        $.ajax({
+            url: linkDoor + '/set/' + msg
+        }).done(function() {
+            console.log('sent air action complete');
+
+        }).fail(function() {
+            console.error('Fail to sent air action');
         });
     });
 }
