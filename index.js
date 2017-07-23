@@ -1,6 +1,6 @@
 function main() {
-    var linkTemp = 'http://158.108.165.223/data/5910503758/temp';
-    var linkBright = '';
+    var linkTemp = 'http://158.108.165.223/data/5910503758/temperature';
+    var linkBright = 'http://158.108.165.223/data/5910503758/bright';
     var linkPerson = '';
     var linkDoor = 'http://158.108.165.223/data/5910500520/door';
 
@@ -16,15 +16,15 @@ function main() {
     }, 400);
 
     //Receive Brightness from url
-    // setInterval(function() {
-    //     $.ajax({
-    //         url: linkBright
-    //     }).done(function(data) {
-    //         $('#lightbox').val(data);
-    //     }).fail(function() {
-    //         console.error('Fail to receive Brightness');
-    //     });
-    // }, 400);
+    setInterval(function() {
+        $.ajax({
+            url: linkBright
+        }).done(function(data) {
+            $('#lightbox').val('Brightness : '+data);
+        }).fail(function() {
+            console.error('Fail to receive Brightness');
+        });
+    }, 400);
 
     //Receive Person from url
     // setInterval(function() {
