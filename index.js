@@ -1,4 +1,3 @@
-
 function main() {
     var linkTemp = 'http://158.108.165.223/data/5910503758/temperature';
     var linkBright = 'http://158.108.165.223/data/5910503758/bright';
@@ -6,17 +5,44 @@ function main() {
     var linkDoor = 'http://158.108.165.223/data/5910500520/door';
     var linkAir = 'http://158.108.165.223/data/5910503758/air';
     var linkLight = 'http://158.108.165.223/data/5910503758/light'
+    var linkSetup = 'http://158.108.165.223/data/5910503758/setup';
     var toggle = 0;
 
-    $('#switch').click(function(){
-      if(toggle==0){
-        toggle=1;
-        $(autobox).val('Automatical');
-      }
-      else{
-        toggle=0;
-        $(autobox).val('Only Manual');
-      }
+    //set starter manual
+    $('#airbutton').prop('disabled', false);
+    $('#lightbutton').prop('disabled', false);
+    $('#doorbutton').prop('disabled', false);
+
+    //set auto or manual
+    $('#switch').click(function() {
+        if (toggle == 0) {
+            toggle = 1;
+            $('#autobox').val('Automatical');
+            $.ajax({
+                url: linkSetup + "/set/" + 'Auto'
+            }).done(function() {
+                console.log('done');
+            }).fail(function() {
+                console.error('something wrong');
+            });
+            $('#airbutton').prop('disabled', true);
+            $('#lightbutton').prop('disabled', true);
+            $('#doorbutton').prop('disabled', true);
+        } else {
+            toggle = 0;
+            $(autobox).val('Only Manual');
+            $.ajax({
+                url: linkSetup + "/set/" + 'Manual'
+            }).done(function() {
+                console.log('done');
+            }).fail(function() {
+                console.error('something wrong');
+            });
+            $('#airbutton').prop('disabled', false);
+            $('#lightbutton').prop('disabled', false);
+            $('#doorbutton').prop('disabled', false);
+
+        }
     })
 
     //Receive temperature from url
@@ -76,7 +102,7 @@ function main() {
             url: linkLight
         }).done(function(data) {
             console.log('done');
-            if (data==1) {
+            if (data == 1) {
                 $('#lightbox').val('Light : On');
                 $('#lightbutton').val('open');
             } else {
@@ -84,18 +110,18 @@ function main() {
                 $('#lightbutton').val('close');
             }
         }).fail(function() {
-            console.error('Fail to receive Door');
+            console.error('Fail to receive Light');
         });
     }, 400);
 
 
-     //receive the air
+    //receive the air
     setInterval(function() {
         $.ajax({
             url: linkAir
         }).done(function(data) {
             console.log('done');
-            if (data=='ON') {
+            if (data == 'ON') {
                 $('#airbox').val('Air : On');
                 $('#airbutton').val('open');
             } else {
@@ -106,15 +132,14 @@ function main() {
             console.error('Fail to receive Door');
         });
     }, 400);
-
     //set the light on off
     $('#lightbutton').click(function() {
         var msg
         if ($('#lightbutton').val() === 'open') {
             msg = 'OFF';
             // $("#doorbutton").prop('value', 'Save');
-            $("#doorbutton").val("close");
-            $("#doorbutton").text('Open the Light');
+            $("#lightbutton").val("close");
+            $("#lightbutton").text('Open the Light');
         } else {
             msg = 1;
             // $("#doorbutton").prop('value', 'Save');
